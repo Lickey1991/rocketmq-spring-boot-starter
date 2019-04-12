@@ -59,7 +59,7 @@ public class MessageBuilder {
     }
 
     public Message build() {
-        String messageKey= "";
+        StringBuilder messageKey= new StringBuilder(StringUtils.isEmpty(key) ? "" : key);
         try {
             Field[] fields = messageBody.getClass().getDeclaredFields();
             for (Field field : fields) {
@@ -69,7 +69,7 @@ public class MessageBuilder {
                         if(allFAnnos[i].annotationType().equals(MQKey.class)) {
                             field.setAccessible(true);
                             MQKey mqKey = MQKey.class.cast(allFAnnos[i]);
-                            messageKey = StringUtils.isEmpty(mqKey.prefix()) ? field.get(messageBody).toString() : (mqKey.prefix() + field.get(messageBody).toString());
+                            messageKey.append(StringUtils.SPACE).append(StringUtils.isEmpty(mqKey.prefix()) ? field.get(messageBody).toString() : (mqKey.prefix() + ":" + field.get(messageBody).toString()));
                         }
                     }
                 }
@@ -87,8 +87,8 @@ public class MessageBuilder {
         if (!StringUtils.isEmpty(tag)) {
             message.setTags(tag);
         }
-        if(StringUtils.isNotEmpty(messageKey)) {
-            message.setKeys(messageKey);
+        if(StringUtils.isNotEmpty(messageKey.toString())) {
+            message.setKeys(messageKey.toString());
         }
         if(delayTimeLevel != null && delayTimeLevel > 0 && delayTimeLevel <= DELAY_ARRAY.length) {
             message.setDelayTimeLevel(delayTimeLevel);
