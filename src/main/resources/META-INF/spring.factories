@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.shandiangou.starter.rocketmq.config.MQBaseAutoConfiguration,\
-com.shandiangou.starter.rocketmq.config.MQConsumerAutoConfiguration,\
-com.shandiangou.starter.rocketmq.config.MQProducerAutoConfiguration
+com.lickey.starter.rocketmq.config.MQBaseAutoConfiguration,\
+com.lickey.starter.rocketmq.config.MQConsumerAutoConfiguration,\
+com.lickey.starter.rocketmq.config.MQProducerAutoConfiguration
