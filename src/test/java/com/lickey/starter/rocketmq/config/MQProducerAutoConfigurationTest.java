@@ -97,12 +97,12 @@ public class MQProducerAutoConfigurationTest {
 
 
     @Component
-    @MQProducer
+    @MQProducer(producerGroup="starter_group")
     static class TestProducer extends AbstractMQProducer {
     }
 
     @Component
-    @MQProducer
+    @MQProducer(producerGroup="starter_group")
     static class TestProducerNoParent{
     }
 
