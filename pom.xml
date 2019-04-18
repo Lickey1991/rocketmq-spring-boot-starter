@@ -2,31 +2,54 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
-        <relativePath/>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
     </parent>
     <groupId>com.lickey</groupId>
     <artifactId>spring-boot-starter-rocketmq</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
+    <url>https://github.com/Lickey1991/rocketmq-spring-boot-starter</url>
     <properties>
         <rocketmq.version>4.3.0</rocketmq.version>
         <file_encoding>UTF-8</file_encoding>
     </properties>
+    <description>rocket mq starter</description>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git://github.com/Lickey1991/rocketmq-spring-boot-starter.git</connection>
+        <developerConnection>scm:git:git@github.com:Lickey1991/rocketmq-spring-boot-starter.git</developerConnection>
+        <url>https://github.com/Lickey1991/rocketmq-spring-boot-starter</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>lickey</id>
+            <name>Lickey</name>
+            <email>lickey_1991@gmail.com</email>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>2.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
+            <version>2.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
@@ -36,25 +59,58 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+            <version>2.0.3.RELEASE</version>
         </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <url>http://maven.oschina.net/content/groups/public/releases</url>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
-            <url>http://maven.oschina.net/content/groups/public/snapshots/</url>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                        <skip>true</skip>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
